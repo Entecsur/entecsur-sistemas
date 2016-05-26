@@ -1,0 +1,91 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font-family: 'Titillium Web', sans-serif;
+	background: #D8E2EC;
+}
+label{
+	display: block;
+	margin-bottom: 5px;
+}
+.evt-content{
+	overflow: hidden;
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    box-sizing:border-box;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+}
+.evt-user{
+	box-sizing:border-box;
+	width: 100%;
+	border:1px solid #ccc;
+	padding:10px;
+	border-radius: 4px;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 16px;
+
+
+}
+
+.evt-login{
+	padding-bottom: 10px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background: #2C82C9;
+	font-family: 'Orbitron', sans-serif;
+	font-weight: bold;
+	font-size: 28px;
+	color: #f2f2f2;
+}
+.evt-login-footer{
+	height: 30px;
+	padding-top: 10px;
+	text-align: center;
+	background: #2C82C9;
+
+}
+input#usuario{
+	background:  #F4FFE0  url(../images/user1.png) no-repeat 0 7px;
+	padding-left: 35px;
+}
+input#password{
+	background:  #F4FFE0 url(../images/key.png) no-repeat 0 7px;
+	padding-left: 35px;
+}
+.evt-submit{
+	box-sizing:border-box;
+	margin-top: 10px;
+	width: 100%;
+	min-width: 50px;
+	height: 45px;
+	background: #2C82C9;
+	border:1px solid #2C82C9;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 20px;
+	color:#f2f2f2;
+
+}
+.evt-submit:hover{
+	background: #4387B5;
+	border:1px #00587A;
+}
+.evt-form{
+	padding: 10px;
+}
+.evt-error-password,.evt-error-user{
+	font-size: 14px;
+	color: #D33257;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+
+
