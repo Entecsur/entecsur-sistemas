@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuario_lib {
+class User {
 
 	var $CI;
 	public function __construct()
@@ -30,13 +30,5 @@ class Usuario_lib {
 		$this->set_usuario($usuario);
 		return true;
 	}
-
-	public function suma(){
-		$a = 5;
-		$b = 6;
-		$suma =$a+$b;
-		return $suma;
-	}
-
 
 }

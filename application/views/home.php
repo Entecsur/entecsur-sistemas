@@ -8,7 +8,7 @@
 <body>
 	<h3>Bienvenido:<?php echo $usuario['persona']['personas'][0]['nom_part']." ".$usuario['persona']['personas'][0]['ape_pater']?> </h3>
 	<h4>Usuario: <?php echo $usuario['persona']['personas'][0]['usuario_nom']?></h4>
-	<h4>Usuario: <?php echo $usuario['persona']['personas'][0]['pass']?></h4>
+	<h4>Password: <?php echo $usuario['persona']['personas'][0]['pass']?></h4>
 
 <table class="table table-hover">
 	<thead>
