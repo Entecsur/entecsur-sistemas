@@ -20,7 +20,7 @@ class Usuario_model extends CI_Model{
 		$sql = $this->db->select('*')
 				->from('cargo c')
 				->join('usuario u','c.id_Cargo = u.Cargo_id_Cargo')
-				->join('persona p','p.id_part = u.participante_id_part')
+				->join('persona p','p.idpersona = u.persona_idpersona')
 				->where(array('u.id_usuario' => $id_persona))
 				->get();
 				return $sql->result_array();

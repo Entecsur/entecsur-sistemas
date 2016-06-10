@@ -31,7 +31,12 @@ class Login extends CI_Controller
 				}
 			}
 		}
-		$this->load->view('login');
+		if(!empty($this->user->get_usuario())){
+			redirect(base_url().'home');
+		}else{
+			$this->load->view('login');
+		}
+
 	}
 	public function home(){
 		if(!empty($this->user->get_usuario()))
