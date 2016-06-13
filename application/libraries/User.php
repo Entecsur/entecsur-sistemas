@@ -24,11 +24,24 @@ class User {
 		$this->CI->session->set_userdata('usuario',$usuario);
 	}
 
-	public function add_usuario($user = array()){
+	public function add_usuario($user){
 		$usuario = $this->get_usuario();
 		$usuario['persona'] = $user;
 		$this->set_usuario($usuario);
 		return true;
 	}
 
+	function filtrar_array(&$array, $clave_orden) 
+			{
+  				$array_filtrado = array(); 
+  				foreach($array as $index=>$array_value) 
+  				{
+	    			$value = $array_value[$clave_orden];
+	    			unset($array_value[$clave_orden]);
+	    			$array_filtrado[$value][] = $array_value;
+    			}
+
+ 			 		$array = $array_filtrado; 
+			}
+	
 }

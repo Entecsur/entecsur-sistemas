@@ -1,0 +1,36 @@
+.evt-navh{
+	height: 50px;
+	width: 100%;
+	background-color: #ccc;
+}
+.evt-navh ul{
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+.evt-navh ul li{
+	float: left;
+	
+}
+.evt-navh ul li a{
+	text-decoration: none;
+	display: block;
+	line-height: 50px;
+	background-color:  #ccc;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: black;
+	}
+
+.evt-navh ul li a:hover{
+	background-color: #3E4651;
+	color: #f2f2f2;
+
+
+}
+.evt-navh ul li a span{
+	font-size: 17px;
+	color: #2C82C9;
+	margin-right: 5px;
+
+}

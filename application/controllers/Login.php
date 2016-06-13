@@ -23,7 +23,7 @@ class Login extends CI_Controller
 					$this->session->set_userdata('login');
 					$datos['privilegios'] = $this->Usuario_model->usuario_privilegio($data->id_usuario);
 					$datos['personas'] = $this->Usuario_model->persona($data->id_usuario);
-					$this->user->add_usuario($datos);
+					$this->user->add_usuario($datos); 
 					redirect(base_url().'home');
 				}else{
 					$this->session->set_flashdata('Message',$this->lang->line('evt-controller-message'));
@@ -31,24 +31,16 @@ class Login extends CI_Controller
 				}
 			}
 		}
-		if(!empty($this->user->get_usuario())){
+		if(!empty($this->user->get_usuario()))
+		{
 			redirect(base_url().'home');
 		}else{
 			$this->load->view('login');
 		}
 
 	}
-	public function home(){
-		if(!empty($this->user->get_usuario()))
-		{
-			$usuario = $this->user->get_usuario();
-			$this->load->view('home',compact('usuario','suma'));
-		}else{
-			redirect(base_url().'login');
-		}
-
-	}
-	public function logout(){
+	public function logout()
+	{
 		$this->session->unset_userdata(array('usuario' => ''));
 		$this->session->sess_destroy('login');
 		redirect(base_url().'login');
