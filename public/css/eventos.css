@@ -20,6 +20,7 @@
 	padding-left: 10px;
 	padding-right: 10px;
 	color: black;
+	border-right: 1px solid #f2f2f2;
 	}
 
 .evt-navh ul li a:hover{
@@ -33,4 +34,98 @@
 	color: #2C82C9;
 	margin-right: 5px;
 
+}
+.evt-form{
+	margin-top: 20px;
+}
+.evt-editar{
+	margin-top: 20px;
+}
+.table-hov:hover{
+	background-color: #D8E2EC;
+}
+.table-header{
+	background-color: #ccc;
+}
+.evt-newevent{
+	box-sizing:border-box;
+	overflow: hidden;
+	background-color: #ccc;
+	padding: 10px;
+}
+.input-content{
+	overflow: hidden;
+	width: 60%;
+	margin:auto;
+	height: 40px;
+}
+.label-content{
+
+	overflow: hidden;
+	float: left;
+	width: 20%;
+	line-height: 40px;
+
+}
+.field-content{
+	overflow: hidden;
+	float: left;
+	width: 80%;
+}
+.field-event{
+	width: 60%;
+	height: 35px;
+	border-radius: 4px;
+}
+.field-submit{
+	/*width: 100px;*/
+
+}
+.field-cbo{
+	width:  20%;
+}
+.evt-error-event{
+	margin:auto;
+	margin-left: 20%;
+	font-size: 12px;
+	color: #C82647;
+}
+.evt-error{
+	width: 60%;
+	margin:auto;
+}
+.evt-search{
+	overflow: hidden;
+	margin-bottom: 5px;
+	padding:5px;
+}
+.evt-input-search{
+	float: left;
+	width: 30%;
+	margin-right: 10px;
+}
+.evt-input-categoria{
+	float: left;
+	width:15%;
+	margin-right: 10px;
+}
+.evt-inputsubmit{
+	float: left;
+	width: 10%;
+}
+.evt-btnbuscar{
+	width:100%;
+}
+fieldset{
+	overflow: hidden;
+	border: 1px dotted red;
+}
+/************pagos********/
+table span{
+	cursor: pointer;
+	color: skyblue;
+	font-size: 17px;
+}
+legend{
+	font-size: 15px;
 }

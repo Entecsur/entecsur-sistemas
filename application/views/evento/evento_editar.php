@@ -1,52 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>Evento || Home</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/css/inicio.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/css/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/css/eventos.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/datetimepicker/jquery.datetimepicker.css">
-	<link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script  src = "<?php echo base_url()?>/public/datetimepicker/jquery.js"></script>
-	<script  src = "<?php echo base_url()?>/public/js/event.js"></script>
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script type="text/javascript" src="<?php echo base_url()?>public/bootstrap/js/bootstrap.min.js"></script>
-	
-	
-</head>
-<body>
-
-			<?php $this->load->view('partial/header');?>
-			<div class="evt-body">
-				<div class="evt-contenido">
-					
-						<div class="evt-navh">
-							<ul>
-								<?php
-								foreach($privilegios as $clave => $value){?>
-									<li><a href="<?php echo base_url()?>home/eventos/<?php echo $value['link']?>" class ="<?php echo $value['link']?>"  ><span class ="<?php echo $value['img_priv']?>"></span><?php echo $value['label'] ?></a></li>
-								<?php }?>
-							</ul>
-						</div>
-
-						<div class="evt-form" >
-
+<div class="evt-form" style="display:none" >
+							<div class="error"></div>
 							<?php 
-							$url = base_url('home/eventos/registrar-evento');
+							$url = base_url('home/eventos/editar-evento');
 							?> <input type = "hidden" class="evt-obtnerevento" value = "<?php echo base_url('home/obtener_evento')?>"><?php
 
 							echo form_open($url,array('class' => 'evt-newevent','id'=>'evt-newevent'));
 							echo form_input(array('class' => 'evt-condicion','name' => 'evt-condicion', 'type'=> 'hidden'));
-							echo form_input(array('id' => 'evt-ideventoo','name' => 'evt-ideventoo','type'=>'hidden'));
+							echo form_input(array('id' => 'evt-ideventoo','name' => 'evt-ideventoo','type'=>'hidden','value' => set_value('evt-idevento')));
 
 							?>
+							<div class="input-content idevento">
+								<div class="label-content">
+									<?php echo form_label('Id Evento');?>
+								</div>
+								<div class="field-content">
+									<?php echo form_input(array('class' => 'field-event form-control', 'name' =>'idevento','value' => set_value('idevento'),'id' => 'evt-idevento'))?>
+								</div>
+							</div>
 							<div class="input-content">
 								<div class="label-content">
 									<?php echo form_label('Nombre del evento');?>
@@ -129,12 +99,21 @@
 						 {
 							echo $this->session->flashdata('Message');
 			 				}?>
-						</div>
-				</div>
-			</div>
-			<?php $this->load->view('partial/footer');?>
-			<script type="text/javascript">
-				
-			</script>
-</body>
-</html>
+</div>
+
+<script type="text/javascript">
+	/*$("input#editar").on('click',function(){
+		var url = "<?php echo base_url()?>home/eventos/editar-evento";
+		$.ajax({
+			url: url,
+			type:"POST",
+			data:$(".evt-newevent").serialize(),
+			success:function(data){
+				console.log(data);
+				$(".error").html(data.msg);
+			}
+
+		});
+		return false;
+	});*/
+</script>

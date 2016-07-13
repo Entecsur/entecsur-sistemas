@@ -26,7 +26,7 @@ class Login extends CI_Controller
 					$this->user->add_usuario($datos); 
 					redirect(base_url().'home');
 				}else{
-					$this->session->set_flashdata('Message',$this->lang->line('evt-controller-message'));
+					$this->session->set_flashdata('Message',$this->lang->line('evt-evento-msge'));
 					redirect(base_url().'login');
 				}
 			}

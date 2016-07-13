@@ -10,7 +10,7 @@ class Usuario_model extends CI_Model{
 		$sql = $this->db->select('*')
 				->from('cargo c')
 				->join('usuario u','c.id_Cargo = u.Cargo_id_Cargo')
-				->where(array('usuario_nom'=>$username,'pass' =>$password))
+				->where(array('u.usuario_nom'=>$username,'u.pass' =>$password))
 				->get();
 				return $sql->row();
 	}

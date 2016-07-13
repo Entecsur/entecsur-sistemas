@@ -10,7 +10,76 @@ $config = array(
 		array(
 			'field' => 'evt-password',
 			'label' => 'Password',
+			'rules' => 'required|is_string|trim',
+			),
+		),
+	"evento" => array(
+		array(
+			'field' => 'evt-nombre',
+			'label' => 'Evento',
+			'rules' =>'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-precio',
+			'label' => 'Precio',
 			'rules' => 'required|is_string|trim'
 			),
+		array(
+			'field' => 'evt-fecha',
+			'label' => 'Fecha',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-hora',
+			'label' => 'Hora',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-ambiente',
+			'label' => 'Ambiente',
+			'rules' => 'required|is_string|trim'
+			),
+		),
+	"pagos" => array(
+		array(
+			'field' => 'evt-nombrep',
+			'label' => 'Nombres',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-apellidosp',
+			'label' => 'Apellidos',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-dnip',
+			'label' => 'DNI',
+			'rules' =>'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-telefonop',
+			'label' => 'Teléfono',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-procedenciap',
+			'label' => 'Procedencia',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-numbol',
+			'label' => 'Numero de boleta',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-cursos[]',
+			'label' => 'Cursos',
+			'rules' => 'required'
+			),
+		array(
+			'field' => 'evt-mtotal',
+			'label' =>'Monto total',
+			'rules' => 'required|is_string|trim'
+			)
 		),
 	);
