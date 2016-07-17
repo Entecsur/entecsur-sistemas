@@ -93,6 +93,7 @@ class Home extends CI_Controller
 				if($this->form_validation->run('pagos') == TRUE){
 					$pago_evento['precios'] = $this->input->post('evt-precio',true);
 					$pago_evento['idevento'] = $this->input->post('evt-idevent',true);
+					$idpersona = $this->input->post('evt-idpersona',true);
 					$lastid = $this->pago_model->lastid();
 					$id = $this->user->removeleftp($lastid->id)+1;
 					$zero = $this->user->zerofill($id,5);
@@ -100,13 +101,9 @@ class Home extends CI_Controller
 					$pago['num_doc'] = $this->input->post('evt-numbol',true);
 					$pago['fecha'] = date('Y-m-d');
 					$pago['monto_tot'] = $this->input->post('evt-mtotal',true);
-					$data = $this->pago_model->insert_pago($pago,$pago_evento);
-					if($data == TRUE){
-						echo "en hora buena";
-					}else{
-						echo "error";
-					}
-					//print_r($pago_evento);exit;
+					$data = $this->pago_model->insert_pago($pago,$pago_evento,$idpersona);
+					$this->session->set_flashdata('Message',"<div class = 'alert alert-success fade in ' > <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pago registrado con éxtito!</div>");
+					echo "1";
 				} else{
 					$errors['nombrep']     = form_error('evt-nombrep','<div class = "evt-error-event">','</div>');
 					$errors['apellidosp']  = form_error('evt-apellidosp','<div class = "evt-error-event">','</div>');
@@ -150,6 +147,14 @@ class Home extends CI_Controller
 			$this->load->view('preinscripcion/preinscripcion',$datos);
 		}else{
 			redirect(base_url().'login');
+		}
+	}
+	public function search_preinscritos(){
+		if($this->input->is_ajax_request() and $this->input->post()){
+			$nombre = $this->input->post('search',true);
+			echo $nombre;
+			$preinscritos = $this->pago_model->obtner_preinscritos("",$nombre);
+			$this->user->list_preinscritos($preinscritos);
 		}
 	}
 	public function obtener_evento(){

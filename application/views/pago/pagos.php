@@ -31,7 +31,7 @@
 							<ul>
 								<?php
 								foreach($privilegios as $clave => $value){?>
-									<li><a href="<?php echo base_url()?>home/eventos/<?php echo $value['link']?>" class ="<?php echo $value['link']?>"  ><span class ="<?php echo $value['img_priv']?>"></span><?php echo $value['label'] ?></a></li>
+									<li><a href="<?php echo base_url()?>home/pagos/<?php echo $value['link']?>" class ="<?php echo $value['link']?>"  ><span class ="<?php echo $value['img_priv']?>"></span><?php echo $value['label'] ?></a></li>
 								<?php }?>
 							</ul>
 						</div>
@@ -45,7 +45,6 @@
 							echo form_input(array('class' => 'evt-condicion','name' => 'evt-condicion', 'type'=> 'hidden'));
 							echo form_input(array('id' => 'evt-ideventoo','name' => 'evt-ideventoo','type'=>'hidden'));
 							?>
-						
 							<div class="input-content">
 								<div class="label-content">
 									<?php echo form_label('Nombres');?>
@@ -56,7 +55,6 @@
 								</div>
 							</div>
 							<div class="nombrep-error evt-error"><?php echo form_error('evt-nombrep','<div class = "evt-error-event">','</div>');?></div>
-		
 							<div class="input-content">
 								<div class="label-content">
 									<?php echo form_label('Apellidos');?>
@@ -132,28 +130,15 @@
 									<?php echo form_submit(array('class' => 'field-submit btn btn-primary','name' => 'submit','value' => 'Editar','id' =>'editar'))?>
 								</div>
 							</div>
-							<input type="hidden" class="evt-idpersona">
+							<input type="hidden" class="evt-idpersona" name="evt-idpersona">
 
 							<?php echo form_close();?>
-							 <?php
-			 			if($this->session->flashdata('Message')!='')
-						 {
-							echo $this->session->flashdata('Message');
-			 			}?>
 						</div>
 
 						<div class="evt-search">
 							<?php
-							echo form_open('home/search_event',array('class' =>'evt-formbuscar'));
-							?><div class="evt-input-search"><?php echo form_input(array('class' => 'evt-buscar form-control','id' => 'evt-buscar','name' => 'evt-buscar','placeholder' => 'Buscar pagos'));?></div>
-							<div class="evt-input-categoria">
-								<select class="evt-cat form-control" name="evt-cat" id="evt-cat">
-									<option value="0">Seleccione categoria</option>
-									<option value="001">Evento</option>
-									<option value="002">Taller</option>
-								</select>
-							</div>
-							<div class="evt-inputsubmit"></div>
+							//echo form_open('home/search_preinscritos',array('class' =>'evt-formbuscar'));
+							?><div class="evt-input-search"><?php echo form_input(array('class' => 'evt-spreinscritos form-control','id' => 'evt-spreinscritos','name' => 'evt-spreinscritos','placeholder' => 'Buscar pre-inscritos'));?></div>
 						</div>
 						<div class="evt-table">
 						 <?php
@@ -217,7 +202,6 @@
 									out += "<input type = 'hidden' value = "+json['preinscritos'][i]['id_evento']+" name = 'evt-idevent[]'>";
 									out += "<input type = 'hidden' value = "+json['preinscritos'][i]['precio']+" name = 'evt-precio[]'>";
     							}
-    							
     							out+="<br>";
     							document.getElementById("input-contentt").innerHTML = out;
                                 $(".evt-table").fadeOut();
@@ -228,30 +212,16 @@
                         });
                 }
 
-                function calcular(monto)
-                {
-                	var valor = 0;
-
-                	$('input[name="evt-cursos[]"]:checked').each(function() 
-					{
-						valor += monto;
-					});
-					console.log(valor);
-                }
-
                 $(document).on("ready",function(){
-                	$("input#evt-regp").on("click",function(){
+                	$("input#evt-regp").on("click",function(e){
+                		e.preventDefault();
                 		var url = "<?php echo base_url()?>home/registrar_pagos";
-                		//alert(url);
                 		$.ajax({
                 			url:url,
                 			type:"post",
                 			data: $(".evt-newevent").serialize(),
                 			success:function(data){
-                				console.log(data);
-                				if(data == true){
-                					console.log("se ha insertado de manera satisfactoria");
-                				}else{
+                				if(data != 1){
                 					var json = JSON.parse(data);
                 					$(".nombrep-error").html(json.nombrep);
                 					$(".apellidosp-error").html(json.apellidosp);
@@ -265,12 +235,29 @@
                 					}else{
                 						$(".cursos-error").html(json.cursos);
                 					}
-                					
+                					return false;
+                				}else{
+                					console.log("en hora buena wey");
+                					window.location.href = "<?php echo base_url()?>home/pagos";
+                					return false;
                 				}
-                			}
+                			},
                 		});
                 		return false;
                 	});
+				 $("input#evt-spreinscritos").on("keyup",function(){
+				 	var url = "<?php echo base_url()?>home/search_preinscritos";
+				 	var nombre = $(this).val();
+				 	$.ajax({
+				 		url:url,
+				 		type: "post",
+				 		data: {search : nombre},
+				 		success:function(data){
+				 			console.log(data);
+				 			$(".evt-table").html(data);
+				 		}
+				 	});
+				 });
                 });
 
 			</script>

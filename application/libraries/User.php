@@ -71,7 +71,38 @@ class User {
 			}
 			return $total;
 	}
+	public function list_preinscritos($preinscritos){
+		?>
+		<table class="table table-hover ">
+								<thead>
+								<tr  class="table-header">
+									<th>Id Persona</th>
+									<th>Nombres</th>
+									<th>Dni</th>
+									<th>Teléfono</th>
+									<th>Evento</th>
+									<th>Precio</th>
+									<th>Ambiente</th>
+									<th></th>
+								</tr>
+								</thead>
 
+								<?php foreach($preinscritos as $clave => $value){?>
+									<tr class="table-hov">
+										<td><?php echo $value['idpersona']?> </td>
+										<td><?php echo $value['nom_part']." ".$value['ape_mater'];?></td>
+										<td><?php echo $value['doc_id']?></td>
+										<td><?php echo $value['telf']?></td>
+										<td><?php echo $value['nom_evento']?></td>
+										<td><?php echo $value['precio']?></td>
+										<td><?php echo $value['ambiente']?></td>
+										<td colspan ="2" ><a  title="ver detalle" href="#" onclick="ver_detalle_inscripcion('<?php echo $value['idpersona']?>');" ><span  class="icon-pen" ></span>ver detalle</a></td>
+
+									</tr>
+								<?php }?>
+							</table>
+		<?php
+	}
 	public function list_event($eventos){
 		?>
 
