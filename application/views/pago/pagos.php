@@ -18,15 +18,11 @@
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="<?php echo base_url()?>public/bootstrap/js/bootstrap.min.js"></script>
-	
-	
 </head>
 <body>
-
 			<?php $this->load->view('partial/header');?>
 			<div class="evt-body">
 				<div class="evt-contenido">
-					
 						<div class="evt-navh">
 							<ul>
 								<?php
@@ -187,7 +183,6 @@
                             type: "POST",
                             data:{idpersona:id},
                             success:function(data){
-                               //console.log(data);
                                var json = JSON.parse(data);
                              	$("input#evt-nombrep").val(json['preinscritos'][0]['nom_part']);
                                 $("input#evt-apellidosp").val(json['preinscritos'][0]['ape_pater']+" "+json['preinscritos'][0]['ape_mater']);
@@ -237,7 +232,6 @@
                 					}
                 					return false;
                 				}else{
-                					console.log("en hora buena wey");
                 					window.location.href = "<?php echo base_url()?>home/pagos";
                 					return false;
                 				}
@@ -253,7 +247,6 @@
 				 		type: "post",
 				 		data: {search : nombre},
 				 		success:function(data){
-				 			console.log(data);
 				 			$(".evt-table").html(data);
 				 		}
 				 	});

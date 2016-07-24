@@ -101,6 +101,7 @@ class Home extends CI_Controller
 					$pago['num_doc'] = $this->input->post('evt-numbol',true);
 					$pago['fecha'] = date('Y-m-d');
 					$pago['monto_tot'] = $this->input->post('evt-mtotal',true);
+					$pago['participante_idpersona'] = $idpersona;
 					$data = $this->pago_model->insert_pago($pago,$pago_evento,$idpersona);
 					$this->session->set_flashdata('Message',"<div class = 'alert alert-success fade in ' > <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pago registrado con éxtito!</div>");
 					echo "1";
@@ -113,6 +114,7 @@ class Home extends CI_Controller
 					$errors['numbol']      = form_error('evt-numbol','<div class = "evt-error-event">','</div>');
 					$errors['cursos']      = form_error('evt-cursos[]','<div class = "evt-error-event">','</div>');
 					$errors['mtotal']      = form_error('evt-mtotal','<div class = "evt-error-event">','</div>');
+
         			echo  json_encode($errors);
 				}
 			}
@@ -123,11 +125,53 @@ class Home extends CI_Controller
 		{
 			$priv = $this->uri->segment(2);
 			$datos['privilegios'] = $this->Usuario_model->obtener_priv($priv);
+			$datos['distritos'] = $this->ponente_model->list_distrito();
+			$datos['procedencia'] = $this->ponente_model->list_procedencia();
+			$datos['eventos']     = $this->evento_model->list_event();
 			$this->load->view('ponente/ponentes',$datos);
 		}else{
 			redirect(base_url().'login');
 		}
 	}
+	public function registrar_ponente(){
+		if($this->input->is_ajax_request() and $this->input->post()){
+			if($this->form_validation->run('ponentes') == TRUE){
+				if($this->input->post('evt-opcion') != ""){
+					$lastid = $this->ponente_model->lastid();
+					$id = $this->user->removeleft_ponente($lastid->id)+1;
+					$zero = $this->user->zerofill($id,3);
+					$data['idpersona']            = "P".$zero;
+					$data['nom_part']             = $this->input->post('evt-nombrep',true);
+					$data['ape_pater']            =$this->input->post('evt-apellidop',true);
+					$data['ape_mater']            = $this->input->post('evt-apellidom',true);
+					$data['doc_id']               = $this->input->post('evt-dnip',true);
+					$data['telf']                 =$this->input->post('evt-telefonop',true);
+					$data['correo']               = $this->input->post('evt-email',true);
+					$data['distrito_id_distrito'] = $this->input->post('evt-cbodistrito',true);
+					$data['procedencia_id_proce'] =$this->input->post('evt-cboprocedencia',true);
+					$data['sexo']                 =$this->input->post('evt-cbosex',true);
+					$ponente_evento['id_evento']    =$this->input->post('idevento',true);
+					$ponente['persona_idpersona'] = "P".$zero;
+					$this->ponente_model->insert_ponente($data,$ponente,$ponente_evento);
+					$this->session->set_flashdata('Message',"<div class = 'alert alert-success fade in ' > <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Ponente registrado con éxtito!</div>");
+					echo 1;
+				}else{
+					echo 0;
+				}
+			}else{
+				$errors['nombrep']        = form_error('evt-nombrep','<div class = "evt-error-event">','</div>');
+				$errors['apellidop']      = form_error('evt-apellidop','<div class = "evt-error-event">','</div>');
+				$errors['apellidom']      = form_error('evt-apellidom','<div class = "evt-error-event">','</div>');
+				$errors['dnip']           = form_error('evt-dnip','<div class = "evt-error-event">','</div>');
+				$errors['telefonop']      = form_error('evt-telefonop','<div class = "evt-error-event">','</div>');
+				$errors['emailp']         = form_error('evt-email','<div class = "evt-error-event">','</div>');
+				$errors['cbodistrito']    = form_error('evt-cbodistrito','<div class = "evt-error-event">','</div>');
+				$errors['cboprocedencia'] = form_error('evt-cboprocedencia','<div class = "evt-error-event">','</div>');
+				echo json_encode($errors);
+			}
+		}
+	}
+
 	public function certificaciones(){
 		if(!empty($this->user->get_usuario()))
 		{

@@ -82,4 +82,48 @@ $config = array(
 			'rules' => 'required|is_string|trim'
 			)
 		),
+	"ponentes"  => array(
+		array(
+			'field' => 'evt-nombrep',
+			'label' => 'Nombres',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-apellidop',
+			'label' => 'A. Paterno',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-apellidom',
+			'label' => 'A. Materno',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-dnip',
+			'label' => 'Dni',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-telefonop',
+			'label' => 'Teléfono',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-email',
+			'label' => 'E-mail',
+			'rules' => 'required|is_string|trim'
+			),
+		array(
+			'field' => 'evt-cbodistrito',
+			'label' => 'Distrito',
+			'rules' => 'validaCheckbox'
+			),
+		
+		array(
+			'field' => 'evt-cboprocedencia',
+			'label' => 'Procedencia',
+			'rules' => 'validaCheckbox'
+			),
+
+		),
 	);

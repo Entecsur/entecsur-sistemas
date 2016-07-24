@@ -18,15 +18,12 @@
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="<?php echo base_url()?>public/bootstrap/js/bootstrap.min.js"></script>
-	
-	
 </head>
 <body>
 
 			<?php $this->load->view('partial/header');?>
 			<div class="evt-body">
 				<div class="evt-contenido">
-					
 						<div class="evt-navh">
 							<ul>
 								<?php
@@ -134,7 +131,6 @@
 			</div>
 			<?php $this->load->view('partial/footer');?>
 			<script type="text/javascript">
-				
 			</script>
 </body>
 </html>

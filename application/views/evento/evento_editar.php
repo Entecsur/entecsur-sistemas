@@ -101,19 +101,3 @@
 			 				}?>
 </div>
 
-<script type="text/javascript">
-	/*$("input#editar").on('click',function(){
-		var url = "<?php echo base_url()?>home/eventos/editar-evento";
-		$.ajax({
-			url: url,
-			type:"POST",
-			data:$(".evt-newevent").serialize(),
-			success:function(data){
-				console.log(data);
-				$(".error").html(data.msg);
-			}
-
-		});
-		return false;
-	});*/
-</script>

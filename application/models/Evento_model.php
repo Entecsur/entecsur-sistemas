@@ -5,16 +5,20 @@ class Evento_model extends CI_Model{
 	public function __construct(){
 		parent::__construct();
 	}
+
 	public function add_evento($datos = array()){
 		$this->db->insert('evento',$datos);
 		return true;
 	}
 
-	public function list_event()
+	public function list_event($idevento = "")
 	{
 		$this->db->select('*');
 		$this->db->from('evento e');
 		$this->db->join('categoria c','c.id_tipo_evento = e.categoria_id_tipo_evento');
+		if($idevento != ""){
+			$this->db->where(array('id_evento' => $idevento));
+		}
 		$this->db->order_by('e.id_evento','DESC');
 		$sql = $this->db->get();
 		return $sql->result_array();

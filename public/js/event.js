@@ -33,7 +33,6 @@ $(document).on("ready",function(){
                 data:{buscar:buscar,categoria:categoria},
                 success:function(data){
                    $(".evt-table").fadeIn('slow').html(data);
-                   console.log(data);
 
                 }
             });
@@ -64,7 +63,6 @@ function editar(id){
         type:"POST",
         data:{id:id},
         success:function(data){
-            console.log(data);
             var json=JSON.parse(data);
             $("input#evt-nombre").val(json[0]['nom_evento']);
             $(".field-content select").val(json[0]['categoria_id_tipo_evento']);

@@ -60,6 +60,10 @@ class User {
 		$remove = str_replace('PG','0',$id);
 		return (int)$remove;
 	}
+	public function removeleft_ponente($id){
+		$remove = str_replace('P','0',$id);
+		return (int)$remove;
+	}
 
 	public function _monto_total($datos)
 	{

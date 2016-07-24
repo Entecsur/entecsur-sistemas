@@ -51,7 +51,8 @@ class Pago_model extends CI_Model
 		$this->db->where(array('idpersona' => $idpersona));
 		$this->db->update('participante',array('estado_pago' => 1));
 		$this->db->trans_complete();
-		return true;
+		$success = $this->db->trans_status();
+		return $success;
 	}
 
 	public function lastid(){
