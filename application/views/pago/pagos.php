@@ -157,6 +157,7 @@
 									<th>Nombres</th>
 									<th>Dni</th>
 									<th>Teléfono</th>
+									<th>E-mail</th>
 									<th>Ambiente</th>
 									<th></th>
 								</tr>
@@ -168,6 +169,7 @@
 										<td><?php echo $value['nom_part']." ".$value['ape_mater'];?></td>
 										<td><?php echo $value['doc_id']?></td>
 										<td><?php echo $value['telf']?></td>
+										<td><?php echo $value['correo']?></td>
 										<td><?php echo $value['ambiente']?></td>
 										<td colspan ="2" ><a  title="ver detalle" href="#" onclick="ver_detalle_inscripcion('<?php echo $value['idpersona']?>');" ><span  class="icon-pen" ></span>ver detalle</a></td>
 
