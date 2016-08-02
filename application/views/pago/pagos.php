@@ -42,6 +42,11 @@
 							echo form_input(array('id' => 'evt-ideventoo','name' => 'evt-ideventoo','type'=>'hidden'));
 							?>
 							<div class="input-content">
+								<hr>
+									Datos personales
+								<hr>
+							</div>
+							<div class="input-content">
 								<div class="label-content">
 									<?php echo form_label('Nombres');?>
 								</div>
@@ -96,10 +101,6 @@
 								</div>
 							</div>
 							<div class="numbolp-error evt-error"><?php echo form_error('evt-procedenciap','<div class = "evt-error-event">','</div>');?></div>
-
-							<div class="input-content" id="input-contentt" style="height:500">
-							</div>
-							<div class="cursos-error evt-error"><?php echo form_error('evt-procedenciap','<div class = "evt-error-event">','</div>');?></div>
 							<div class="input-content">
 								<div class="label-content">
 									<?php echo form_label('Monto  total');?>
@@ -109,6 +110,11 @@
 								</div>
 							</div>
 							<div class="mtotal-error evt-error"></div>
+							<div class="input-content" >
+								<hr>Cursos preinscritos<hr>
+								<div id="input-contentt"></div>
+							</div>
+							<div class="cursos-error evt-error"><?php echo form_error('evt-procedenciap','<div class = "evt-error-event">','</div>');?></div>
 
 							<div class="input-content input-new">
 								<div class="label-content">
@@ -127,7 +133,9 @@
 								</div>
 							</div>
 							<input type="hidden" class="evt-idpersona" name="evt-idpersona">
-
+							<div class="input-content">
+								<hr>
+							</div>
 							<?php echo form_close();?>
 						</div>
 
@@ -149,8 +157,6 @@
 									<th>Nombres</th>
 									<th>Dni</th>
 									<th>Teléfono</th>
-									<th>Evento</th>
-									<th>Precio</th>
 									<th>Ambiente</th>
 									<th></th>
 								</tr>
@@ -162,8 +168,6 @@
 										<td><?php echo $value['nom_part']." ".$value['ape_mater'];?></td>
 										<td><?php echo $value['doc_id']?></td>
 										<td><?php echo $value['telf']?></td>
-										<td><?php echo $value['nom_evento']?></td>
-										<td><?php echo $value['precio']?></td>
 										<td><?php echo $value['ambiente']?></td>
 										<td colspan ="2" ><a  title="ver detalle" href="#" onclick="ver_detalle_inscripcion('<?php echo $value['idpersona']?>');" ><span  class="icon-pen" ></span>ver detalle</a></td>
 
@@ -183,6 +187,7 @@
                             type: "POST",
                             data:{idpersona:id},
                             success:function(data){
+                            	console.log(data);
                                var json = JSON.parse(data);
                              	$("input#evt-nombrep").val(json['preinscritos'][0]['nom_part']);
                                 $("input#evt-apellidosp").val(json['preinscritos'][0]['ape_pater']+" "+json['preinscritos'][0]['ape_mater']);

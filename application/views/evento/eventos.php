@@ -45,6 +45,11 @@
 
 							?>
 							<div class="input-content">
+								<hr>
+									Datos de evento(Taller o conferencia)
+								<hr>
+							</div>
+							<div class="input-content">
 								<div class="label-content">
 									<?php echo form_label('Nombre del evento');?>
 								</div>
@@ -61,7 +66,7 @@
 								<div class="field-content">
 									<select class="field-cbo form-control" name="evt-categoria" id="evt-categoria">
 										<option value="0">Seleccione</option>
-										<option value="001">Evento</option>
+										<option value="001">Conferencia</option>
 										<option value="002">Taller</option>
 									</select>
 								</div>
@@ -119,7 +124,9 @@
 									<?php echo form_submit(array('class' => 'field-submit btn btn-primary','name' => 'submit','value' => 'Editar','id' =>'editar'))?>
 								</div>
 							</div>
-
+							<div class="input-content">
+								<hr>
+							</div>
 							<?php echo form_close();?>
 							 <?php
 			 			if($this->session->flashdata('Message')!='')

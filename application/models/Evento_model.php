@@ -46,7 +46,6 @@ class Evento_model extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('evento e');
 		$this->db->join('categoria c','e.categoria_id_tipo_evento =c.id_tipo_evento');
-		//$this->db->where(array('c.id_tipo_evento' => $categoria));
 		$this->db->like('e.nom_evento',$nombre);
 		$this->db->like('c.id_tipo_evento',$categoria);
 		$this->db->order_by('e.id_evento','ASC');

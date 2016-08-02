@@ -132,4 +132,4 @@ $autoload['language'] = array('login','evento');
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Usuario_model','evento_model','pago_model','ponente_model');
+$autoload['model'] = array('Usuario_model','evento_model','pago_model','ponente_model','participante_model','persona_preinscripcion');

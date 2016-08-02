@@ -41,6 +41,11 @@
 							echo form_open($url,array('class' => 'evt-newevent','id'=>'evt-newevent'));
 							?>
 							<div class="input-content">
+								<hr>
+								Datos del ponente
+								<hr>
+							</div>
+							<div class="input-content">
 								<div class="label-content">
 									<?php echo form_label('Nombre');?>
 								</div>
@@ -141,7 +146,11 @@
 								</div>
 							</div>
 							<div class="cboprocedencia-error evt-error"></div>
-
+							<div class="input-content">
+								<hr>
+								Eventos
+								<hr>
+							</div>
 							<div class="input-content">
 								<div class="label-content">
 									<?php echo form_label('Agregar eventos');?>
@@ -150,7 +159,7 @@
 
 								<div class="field-content campostext">
 									<div class="evt-adde">
-											<div class="evt-nomev"><?php echo form_input(array('class' => 'form-control evt-opcion', 'name' => 'evt-opcion','type' => 'hidden'))?></div>
+											<div class="evt-nomev"><?php echo form_input(array('class' => 'form-control evt-opcion', 'name' => 'evt-opcion','type' => 'text'))?></div>
 											<div class="evt-fecev"><?php echo form_input(array('class' => 'form-control','type' => 'hidden'))?></div>
 											<div class="evt-horev"><?php echo form_input(array('class' => 'form-control','type' => 'hidden'))?></div>
 
@@ -177,7 +186,10 @@
 								</div>
 							</div>
 							<input type="hidden" class="evt-idpersona" name="evt-idpersona">
-
+							<input type="hidden" name="regp" value="registrarp">
+							<div class="input-content">
+								<hr>
+							</div>
 							<?php echo form_close();?>
 						</div>
 						 <?php
@@ -272,6 +284,7 @@
     						type: 'post',
     						data:$(".evt-newevent").serialize(),
     						success:function(data){
+    							console.log(data);
     							if(data != 1){
 									var json = JSON.parse(data);
 									if(data == 0){

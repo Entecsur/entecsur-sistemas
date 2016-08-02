@@ -24,7 +24,7 @@
 			 {
 					echo $this->session->flashdata('Message');
 			 }?>
-			<?php echo form_open('login',array('class' => 'evt-form-login'));?>
+			<?php echo form_open('login',array('class' => 'evt-form-login','id' => 'evt-form'));?>
 			<label><?php echo $this->lang->line('evt-usuario')?></label>
 			<?php echo form_input(array('type' => 'text','name' => 'evt-usuario','class' => 'evt-user','id' => 'usuario','value' => set_value('evt-usuario')))?>
 			<?php echo form_error('evt-usuario','<span class = "evt-error-user">','</span>');?><br>

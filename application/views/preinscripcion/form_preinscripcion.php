@@ -6,6 +6,12 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/js/jquery.js">
 	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/css/inicio.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/css/eventos.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/datetimepicker/jquery.datetimepicker.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/css/w3.css">
 	<style>
 		.pacifico{
 			font-family: 'Pacifico', cursive;
@@ -23,24 +29,30 @@
 		<header class="header">
 			<h1 class="pacifico verde center">Pre - Inscripción</h1><br>
 		</header>
-		<?php echo form_open('/pre_inscripcion/insert'); ?>
+		<?php if($this->session->flashdata('Message')!=''){echo $this->session->flashdata('Message');}?>
+
+		<?php  $url = base_url('pre_inscripcion');?> 
+		<?php echo form_open($url); ?>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="form-group">
 					<?php echo form_label('Nombre (*)', 'nombre');?>
 					<?php echo form_input(array('class' => 'form-control', 'name' => 'nombre')); ?>
+					<?php echo form_error('nombre','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
 					<?php echo form_label('Apellido Paterno (*)', 'paterno'); ?>
 					<?php echo form_input(array('class' => 'form-control', 'name' => 'paterno')); ?>
+					<?php echo form_error('paterno','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
 					<?php echo form_label('Apellido Materno (*)', 'materno'); ?>
 					<?php echo form_input(array('class' => 'form-control', 'name' => 'materno')); ?>
+					<?php echo form_error('materno','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 		</div>
@@ -50,6 +62,7 @@
 				<div class="form-group">
 					<?php echo form_label('Doc. de Identidad (*)', 'doc_id'); ?>
 					<?php echo form_input(array('class' => 'form-control', 'name' => 'doc_id')); ?>
+					<?php echo form_error('doc_id','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -59,6 +72,7 @@
 						<?php echo form_input(array('class' => 'form-control', 'type' => 'date', 'name' => 'fec_nac')); ?>
 						<span class=" input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 					</div>
+					<?php echo form_error('fec_nac','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -72,6 +86,7 @@
 					<?php } ?>
 					</select>
 					<?php } ?>
+					<?php echo form_error('distrito','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 		</div>
@@ -81,12 +96,14 @@
 				<div class="form-group">
 					<?php echo form_label('Telefono (*)', 'telef'); ?>
 					<?php echo form_input(array('class' => 'form-control', 'name' => 'telef')); ?>
+					<?php echo form_error('telef','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
 					<?php echo form_label('Correo (*)', 'correo'); ?>
 					<?php echo form_input(array('type' => 'email', 'class' => 'form-control', 'name' => 'correo')); ?>
+					<?php echo form_error('correo','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>		
 			<div class="col-md-4">
@@ -100,6 +117,7 @@
 						<?php } ?>
 						</select>
 					<?php } ?>
+					<?php echo form_error('proced','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 		</div>
@@ -113,6 +131,7 @@
 						<option value="M">Masculino</option>
 						<option value="F">Femenino</option>
 					</select>
+					<?php echo form_error('sexo','<div class = "evt-error-event">','</div>')?>
 				</div>
 			</div>
 		</div>

@@ -9,6 +9,7 @@
 				<?php
 				$usuario = $this->user->get_usuario();
 				$row  = $usuario['persona']['privilegios'];
+				//print_r($row); 
 				$this->user->filtrar_array($row,'nombre_cat');
 				
 				foreach($row as $categoria => $priv){?>

@@ -9,6 +9,11 @@
 							echo form_input(array('id' => 'evt-ideventoo','name' => 'evt-ideventoo','type'=>'hidden','value' => set_value('evt-idevento')));
 
 							?>
+							<div class="input-content">
+								<hr>
+									Datos de evento(Taller o Conferencia)
+								<hr>
+							</div>
 							<div class="input-content idevento">
 								<div class="label-content">
 									<?php echo form_label('Id Evento');?>
@@ -92,7 +97,9 @@
 									<?php echo form_submit(array('class' => 'field-submit btn btn-primary','name' => 'submit','value' => 'Editar','id' =>'editar'))?>
 								</div>
 							</div>
-
+							<div class="input-content">
+								<hr>
+							</div>
 							<?php echo form_close();?>
 							 <?php
 			 			if($this->session->flashdata('Message')!='')

@@ -10,9 +10,7 @@ class Pago_model extends CI_Model
 
 	public function obtner_preinscritos($idpersona = "",$search = "")
 	{
-		$this->db->select('pe.`idpersona`, pe.`nom_part`,pe.`ape_pater`,pe.`ape_mater`,pe.`doc_id`,pe.`telf`,
-		pe.`sexo`,pe.`telf`,pr.`nom_proce`,pr.`telf_proce`,e.`id_evento`,e.`nom_evento`, e.`precio`,
-		e.`fecha_evento`,e.`ambiente`,e.`hora_ini`');
+		$this->db->select('*');
 		$this->db->from('parti_preinscripcion pp');
 		$this->db->join('participante p','p.idpersona = pp.participante_idpersona');
 		$this->db->join('persona pe','pe.idpersona = p.idpersona');
@@ -23,6 +21,7 @@ class Pago_model extends CI_Model
 			if($search != ""){
 				$this->db->like('pe.nom_part',$search);
 				$this->db->or_like('pe.doc_id',$search);
+				$this->db->or_like('pe.idpersona',$search);
 			}
 			$this->db->group_by('p.idpersona');
 

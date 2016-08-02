@@ -163,6 +163,9 @@ legend{
 	
 
 }
+.w3-modal{
+	overflow: hidden;
+}
 .w3-header{
 	width: 100%;
 	height: 40px;
@@ -182,4 +185,17 @@ legend{
 .w3-contenido{
 	overflow-y: scroll;
 	height: 500px;
+}
+
+.evt-sistuser{
+	float: left;
+	width: 50%;
+}
+.evt-priv{
+	float: left;
+	width:50%;
+}
+.evt-contpre{
+	padding-left: 30px;
+	padding-right: 30px;
 }

@@ -23,11 +23,11 @@ class Login extends CI_Controller
 					$this->session->set_userdata('login');
 					$datos['privilegios'] = $this->Usuario_model->usuario_privilegio($data->id_usuario);
 					$datos['personas'] = $this->Usuario_model->persona($data->id_usuario);
-					$this->user->add_usuario($datos); 
+					$this->user->add_usuario($datos);
 					redirect(base_url().'home');
 				}else{
 					$this->session->set_flashdata('Message',$this->lang->line('evt-evento-msge'));
-					redirect(base_url().'login');
+					redirect(base_url().'login2');
 				}
 			}
 		}
@@ -35,7 +35,7 @@ class Login extends CI_Controller
 		{
 			redirect(base_url().'home');
 		}else{
-			$this->load->view('login');
+			$this->load->view('login2');
 		}
 
 	}

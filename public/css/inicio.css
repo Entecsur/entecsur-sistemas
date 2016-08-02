@@ -93,10 +93,10 @@ section{
 .evt-body{
 	
 	padding:20px;
-	border:1px dotted red;
+	/*border:1px dotted red;*/
 }
 .evt-contenido{
-	border:1px solid red;
+	/*border:1px solid red;*/
 	margin-left: 40px;
 	margin-right: 40px;
 	background-color: #F2F8EA;
